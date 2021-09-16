@@ -2,6 +2,7 @@
 
 namespace Wingly\ApiDoc;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Wingly\ApiDoc\Commands\GenerateDocumentationCommand;
 
@@ -9,6 +10,8 @@ class ApiDocServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $this->authorization();
+
         $this->registerPublishing();
 
         $this->registerCommands();
@@ -18,6 +21,25 @@ class ApiDocServiceProvider extends ServiceProvider
         $this->registerViews();
 
         $this->registerRoutes();
+    }
+
+    public function authorization()
+    {
+        $this->gate();
+
+        AuthorizesRequests::auth(function ($request) {
+            return app()->environment('local') ||
+                Gate::check('viewApiDocs', [$request->user()]);
+        });
+    }
+
+    public function gate()
+    {
+        Gate::define('viewApiDocs', function ($user = null) {
+            return in_array($user->email, [
+                //
+            ]);
+        });
     }
 
     public function register(): void
