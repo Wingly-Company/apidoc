@@ -23,7 +23,7 @@ class ApiDocServiceProvider extends ServiceProvider
         $this->registerRoutes();
     }
 
-    public function authorization()
+    public function authorization(): void
     {
         $this->gate();
 
@@ -33,7 +33,7 @@ class ApiDocServiceProvider extends ServiceProvider
         });
     }
 
-    public function gate()
+    public function gate(): void
     {
         Gate::define('viewApiDocs', function ($user = null) {
             return in_array($user->email, [
