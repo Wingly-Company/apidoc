@@ -23,12 +23,12 @@
     @foreach ($endpoint->urlParameters as $parameter)
     <div>
         <p>
-        <span class="font-bold">{{ $parameter->name }}</span> <span class="ml-1">{{ $parameter->type }}</span>
-        @if ($parameter->required)
-        <span class="uppercase text-red-800 ml-1">required</span>
-        @else
-        <span class="text-gray-500 ml-1">optional</span>
-        @endif
+            <span class="font-bold">{{ $parameter->name }}</span> <span class="ml-1">{{ $parameter->type }}</span>
+            @if ($parameter->required)
+            <span class="uppercase text-red-800 ml-1">required</span>
+            @else
+            <span class="text-gray-500 ml-1">optional</span>
+            @endif
         </p>
         <p>{{ $parameter->description }}</p>
     </div>
@@ -43,12 +43,12 @@
     @foreach ($endpoint->bodyParameters as $parameter)
     <div>
         <p>
-        <span class="font-bold">{{ $parameter->name }}</span> <span class="ml-1">{{ $parameter->type }}</span>
-        @if ($parameter->required)
-        <span class="uppercase text-red-800 ml-1">required</span>
-        @else
-        <span class="text-gray-500 ml-1">optional</span>
-        @endif
+            <span class="font-bold">{{ $parameter->name }}</span> <span class="ml-1">{{ $parameter->type }}</span>
+            @if ($parameter->required)
+            <span class="uppercase text-red-800 ml-1">required</span>
+            @else
+            <span class="text-gray-500 ml-1">optional</span>
+            @endif
         </p>
         <p>{{ $parameter->description }}</p>
     </div>
