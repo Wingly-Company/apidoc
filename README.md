@@ -94,7 +94,7 @@ public function boot()
 
 After you've documented your API, you can generate the docs using the `apidoc:generate` Artisan command.
 This will:
-- scan you specified directories and extract information about your endpoints
+- Scan you specified directories and extract information about your endpoints
 - Transform the extracted information into markdown files 
 - Store the files under `storage/apidocs` directory 
 
