@@ -51,7 +51,7 @@ INTRO
 By default, the package will use the current app URL (config('app.url)) as the base URL in your docs. However, you can customize this with the base_url key. For example, setting the base_url to this:
 
 ```php 
-'base_url' => 'http://api.awesome.come',
+'base_url' => 'http://api.awesome.com',
 ```
 
 ## Directories 
