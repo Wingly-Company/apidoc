@@ -10,7 +10,7 @@ First make sure to configure the repository in your composer.json by running:
 composer config repositories.apidoc vcs https://github.com/Wingly-Company/apidoc
 ```
 
-The install the package by running: 
+Then install the package by running: 
 
 ```bash
 composer require wingly/apidoc
@@ -30,7 +30,7 @@ If you leave title empty, the package will infer it from the value of config('ap
 
 ## Description and introductory text
 
-You can add a description of your API using the description key. This description will be displayed in the docs' "Introduction" section.
+You can add a description of your API using the description key. This description will be displayed in the docs "Introduction" section.
 
 The intro_text key is where you'll set the text shown in the "Introduction" section of your docs (after the description).
 
@@ -94,7 +94,7 @@ public function boot()
 
 After you've documented your API, you can generate the docs using the `apidoc:generate` Artisan command.
 This will:
-- Scan you specified directories and extract information about your endpoints
+- Scan your specified directories and extract information about your endpoints
 - Transform the extracted information into markdown files 
 - Store the files under `storage/apidocs` directory 
 
@@ -179,7 +179,7 @@ class ProjectController extends Controller
 
 To add URL parameters to your endpoint you can use the UrlParameter annotation.  
 A section describing the URL parameters will be added to the generated documentation.
-The UrlParameter accepts a name, description type and an optional required parameter. 
+The UrlParameter accepts a name, description, type and an optional required parameter. 
 
 ```php 
 use Wingly\ApiDoc\Attributes as Doc;
@@ -193,7 +193,7 @@ class ProjectController extends Controller
     }
 }
 ```
-You can also apply the annotation at the directly at the method.  
+You can also apply the annotation directly at the method.  
 
 ```php 
 use Wingly\ApiDoc\Attributes as Doc;
@@ -227,7 +227,7 @@ class ProjectController extends Controller
 
 ### Adding responses
 
-You can specify the response types for an endpoint by adding the Response annotation to you method.
+You can specify the response types for an endpoint by adding the Response annotation to your method.
 A section describing the responses will be added to the generated documentation.
 The Response accepts a status (defaults to 200), scenario (defaults to "Success") and example parameters. 
 

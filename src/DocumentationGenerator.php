@@ -62,6 +62,11 @@ class DocumentationGenerator
         $this->processAttributes($fullyQualifiedClassName);
     }
 
+    public function registerClass(string $class): void
+    {
+        $this->processAttributes($class);
+    }
+
     protected function fullQualifiedClassNameFromFile(SplFileInfo $file): string
     {
         $class = trim(Str::replaceFirst($this->basePath, '', $file->getRealPath()), DIRECTORY_SEPARATOR);

@@ -7,7 +7,7 @@
         <title>{{ $title }}</title>
 
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css" rel="stylesheet" >
+        <link href="https://unpkg.com/@tailwindcss/typography@0.4.x/dist/typography.min.css" rel="stylesheet">
     </head>
     <body class="antialiased h-screen bg-white overflow-hidden flex">
         <!-- Sidebar -->

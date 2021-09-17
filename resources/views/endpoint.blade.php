@@ -2,7 +2,7 @@
 
 @if ($endpoint->authenticated)
 <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-red-100 text-red-800">
-  Requires authentication
+    Requires authentication
 </span>
 @endif
 
