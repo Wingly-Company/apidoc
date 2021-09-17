@@ -15,8 +15,8 @@ class RouteTest extends TestCase
         $generator->writeDocs();
 
         $this->assertPageGenerated('route');
-        $this->assertEquals('route', $generator->writer->endpoints()->first()->route->description);
-        $this->assertEquals('get', $generator->writer->endpoints()->first()->route->method);
-        $this->assertEquals('/route', $generator->writer->endpoints()->first()->route->uri);
+        $this->assertEquals('route', $generator->endpoints->first()->route->description);
+        $this->assertEquals('get', $generator->endpoints->first()->route->method);
+        $this->assertEquals('/route', $generator->endpoints->first()->route->uri);
     }
 }

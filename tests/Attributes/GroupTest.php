@@ -17,7 +17,7 @@ class GroupTest extends TestCase
 
         $this
             ->assertPageGenerated('grouped')
-            ->assertEquals('Grouped', $generator->writer->endpoints()->first()->group);
+            ->assertEquals('Grouped', $generator->endpoints->first()->group);
     }
 
     public function test_endpoints_without_group_default_to_general_group()
@@ -28,6 +28,6 @@ class GroupTest extends TestCase
 
         $this
             ->assertPageGenerated('not-grouped')
-            ->assertEquals('General', $generator->writer->endpoints()->first()->group);
+            ->assertEquals('General', $generator->endpoints->first()->group);
     }
 }

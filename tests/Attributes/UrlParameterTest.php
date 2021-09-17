@@ -14,7 +14,7 @@ class UrlParameterTest extends TestCase
         $generator->registerClass(UrlParameterController::class);
         $generator->writeDocs();
 
-        $endpoint = $generator->writer->endpoints()
+        $endpoint = $generator->endpoints
             ->where('route.description', 'unique parameter')->first();
 
         $this->assertPageGenerated('unique-parameter');
@@ -27,7 +27,7 @@ class UrlParameterTest extends TestCase
         $generator->registerClass(UrlParameterController::class);
         $generator->writeDocs();
 
-        $endpoint = $generator->writer->endpoints()
+        $endpoint = $generator->endpoints
             ->where('route.description', 'many parameters')->first();
 
         $this->assertPageGenerated('many-parameters');

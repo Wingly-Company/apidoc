@@ -16,6 +16,6 @@ class AuthenticatedTest extends TestCase
 
         $this
             ->assertPageGenerated('authenticated')
-            ->assertTrue($generator->writer->endpoints()->first()->authenticated);
+            ->assertTrue($generator->endpoints->first()->authenticated);
     }
 }

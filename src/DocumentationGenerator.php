@@ -2,6 +2,8 @@
 
 namespace Wingly\ApiDoc;
 
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use ReflectionAttribute;
 use ReflectionClass;
@@ -14,6 +16,8 @@ use Wingly\ApiDoc\Attributes\Group;
 use Wingly\ApiDoc\Attributes\Parameter;
 use Wingly\ApiDoc\Attributes\Response;
 use Wingly\ApiDoc\Attributes\Route;
+use Wingly\ApiDoc\Writers\MarkdownWriter;
+use Wingly\ApiDoc\Writers\PostmanWriter;
 
 class DocumentationGenerator
 {
@@ -21,13 +25,15 @@ class DocumentationGenerator
 
     public $rootNamespace;
 
-    public $writer;
+    public $endpoints;
 
     public function __construct()
     {
         $this->basePath = app()->path();
 
-        $this->writer = new Writer();
+        $this->endpoints = Collection::make();
+
+        $this->files = app()->make(Filesystem::class);
     }
 
     public function useBasePath(string $basePath): self
@@ -149,12 +155,31 @@ class DocumentationGenerator
                 }
             }
 
-            $this->writer->addEndpoint($endpoint);
+            $this->endpoints->push($endpoint);
         }
     }
 
     public function writeDocs()
     {
-        $this->writer->generate();
+        $this->prune();
+
+        collect([
+            MarkdownWriter::class,
+            PostmanWriter::class,
+        ])
+            ->each(
+                fn ($class) => (new $class($this->endpoints))->generate()
+            );
+    }
+
+    protected function prune()
+    {
+        $directory = storage_path('apidocs/');
+
+        $this->files->deleteDirectory($directory);
+
+        $this->files->makeDirectory($directory, 0777, true);
+
+        $this->files->put($directory . '.gitignore', "*\n!.gitignore\n");
     }
 }

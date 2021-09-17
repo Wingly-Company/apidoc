@@ -29,6 +29,13 @@ class GenerateDocumentationTest extends TestCase
         $this->assertPageGenerated('documentation');
     }
 
+    public function test_it_generates_a_postman_collection_file()
+    {
+        $this->artisan('apidoc:generate');
+
+        $this->assertTrue(File::exists($this->storagePath() . '/postman.json'));
+    }
+
     public function test_it_can_generate_docs_for_a_directory()
     {
         $generator = app(DocumentationGenerator::class);

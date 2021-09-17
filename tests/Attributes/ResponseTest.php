@@ -14,7 +14,7 @@ class ResponseTest extends TestCase
         $generator->registerClass(ResponseController::class);
         $generator->writeDocs();
 
-        $endpoint = $generator->writer->endpoints()
+        $endpoint = $generator->endpoints
             ->where('route.description', 'unique response')->first();
 
         $this->assertPageGenerated('unique-response');
@@ -27,7 +27,7 @@ class ResponseTest extends TestCase
         $generator->registerClass(ResponseController::class);
         $generator->writeDocs();
 
-        $endpoint = $generator->writer->endpoints()
+        $endpoint = $generator->endpoints
             ->where('route.description', 'many responses')->first();
 
         $this->assertPageGenerated('many-responses');
