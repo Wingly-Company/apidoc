@@ -18,9 +18,9 @@ class MarkdownWriter extends Writer
     public function generateIndex()
     {
         $groupedEndpoints = $this->endpoints
-            ->groupBy(function ($endpoint) {
-                return $endpoint->group;
-            });
+            ->sortBy('group')
+            ->groupBy(fn ($endpoint) => $endpoint->group)
+            ->map(fn ($item, $key) => $item->sortBy('route.description'));
 
         $output = View::make('apidoc::documentation', [
             'groupedEndpoints' => $groupedEndpoints,
